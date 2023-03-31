@@ -306,10 +306,11 @@ End Sub
 
 Sub 总表_插入新列并填充表头()
     Dim col As Range
-    For Each col In Range("4:4").Cells
+    For Each col In Range("E4:CF4").Cells
         If col.Value = "增长%" Then
             '插入两列
             col.Offset(0, 1).EntireColumn.Insert
+			col.Offset(0, 1).EntireColumn.ClearFormats
             col.Offset(0, 2).EntireColumn.Insert
             '更新列标题
             col.Offset(0, 1).Value = "同比期"
