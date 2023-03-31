@@ -3,11 +3,11 @@
 '
 '代码为EXCEL VBA 代码
 '用于制作甜啦啦同环比信息表
-' 
+'
 
 Sub 创建依赖表()
-	'创建同比数据源表、环比数据源表、总表、哗啦啦门店信息表
-	'门店管理信息表、本期收银源表、上期收银源表、同期收银源表、门店类型
+    '创建同比数据源表、环比数据源表、总表、哗啦啦门店信息表
+    '门店管理信息表、本期收银源表、上期收银源表、同期收银源表、门店类型
     Dim wb As Workbook
     Set wb = ThisWorkbook
     
@@ -59,31 +59,31 @@ Sub 创建依赖表()
 End Sub
 
 Sub 同环比左侧_插入列并填入表头()
-	Dim j As Integer
-	On Error GoTo Last
-	'取消合并A1的单元格
-	Range("A1").UnMerge
-	'在E列前插入9列
-	Columns("E:E").Select
-	For j = 1 To 9
-		Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromRightorAbove
-	Next j
+    Dim j As Integer
+    On Error GoTo Last
+    '取消合并A1的单元格
+    Range("A1").UnMerge
+    '在E列前插入9列
+    Columns("E:E").Select
+    For j = 1 To 9
+        Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromRightorAbove
+    Next j
 
-	'填入表头
-	Range("E3:E4") = "门店ID"
-	Range("F3:F4") = "门店编号"
-	Range("G3:G4") = "门店类型"
-	Range("H3:H4") = "大区经理"
-	Range("i3:i4") = "省经理"
-	Range("j3:j4") = "区域经理"
-	Range("k3:k4") = "运营状态"
-	Range("l3:l4") = "是否有收银机"
-	Range("m3:m4") = "是否为学校店铺"
-	Last: Exit Sub
+    '填入表头
+    Range("E3:E4") = "门店ID"
+    Range("F3:F4") = "门店编号"
+    Range("G3:G4") = "门店类型"
+    Range("H3:H4") = "大区经理"
+    Range("i3:i4") = "省经理"
+    Range("j3:j4") = "区域经理"
+    Range("k3:k4") = "运营状态"
+    Range("l3:l4") = "是否有收银机"
+    Range("m3:m4") = "是否为学校店铺"
+Last:     Exit Sub
 End Sub
 
 Sub 同环比左侧_填入公式()
-	'在左侧插入的列中填入公式
+    '在左侧插入的列中填入公式
     Dim headers As Variant
     Dim formulas As Variant
     Dim i As Integer
@@ -107,58 +107,58 @@ Sub 同环比左侧_填入公式()
 End Sub
 
 Sub 环比右侧_添加列并填入表头()
-	Range("AW3:AZ3") = "堂食流水"
-	Range("BA3:BD3") = "堂食实收"
-	Range("BE3:BH3") = "外卖流水"
-	Range("BI3:BL3") = "外卖实收"
-	Range("BM3:BP3") = "美团"
-	Range("BQ3:BT3") = "饿了么"
-	Range("BU3:BX3") = "其它"
-	Range("BY3:CB3") = "自提流水"
-	Range("CC3:CF3") = "自提实收"
-	Range("AW4") = "本期"
-	Range("AX4") = "上期"
-	Range("AY4") = "增长"
-	Range("AZ4") = "增长%"
-	Range("AW4:AZ4").Copy Range("BA4")
-	Range("AW4:AZ4").Copy Range("BE4")
-	Range("AW4:AZ4").Copy Range("BI4")
-	Range("AW4:AZ4").Copy Range("BM4")
-	Range("AW4:AZ4").Copy Range("BQ4")
-	Range("AW4:AZ4").Copy Range("BU4")
-	Range("AW4:AZ4").Copy Range("BY4")
-	Range("AW4:AZ4").Copy Range("CC4")
-	'合并表头单元格
-	Application.DisplayAlerts = False
-	Range("AW3:AZ3").Merge
-	Range("BA3:BD3").Merge
-	Range("BE3:BH3").Merge
-	Range("BI3:BL3").Merge
-	Range("BM3:BP3").Merge
-	Range("BQ3:BT3").Merge
-	Range("BU3:BX3").Merge
-	Range("BY3:CB3").Merge
-	Range("CC3:CF3").Merge
-	Application.DisplayAlerts = True
-	'修改单元格方便透视
-	Range("AW4") = "本期堂食流水"
-	Range("AX4") = "上期堂食流水"
-	Range("BA4") = "本期堂食实收"
-	Range("BB4") = "上期堂食实收"
-	Range("BE4") = "本期外卖流水"
-	Range("BF4") = "上期外卖流水"
-	Range("BE4") = "本期外卖实收"
-	Range("BF4") = "上期外卖实收"
-	Range("BM4") = "本期美团"
-	Range("BN4") = "上期美团"
-	Range("BQ4") = "本期饿了么"
-	Range("BR4") = "上期饿了么"
-	Range("BU4") = "本期其它"
-	Range("BV4") = "上期其它"
-	Range("BY4") = "本期自提流水"
-	Range("BX4") = "上期自提流水"
-	Range("CC4") = "本期自提实收"
-	Range("CW4") = "上期自提实收"
+    Range("AW3:AZ3") = "堂食流水"
+    Range("BA3:BD3") = "堂食实收"
+    Range("BE3:BH3") = "外卖流水"
+    Range("BI3:BL3") = "外卖实收"
+    Range("BM3:BP3") = "美团"
+    Range("BQ3:BT3") = "饿了么"
+    Range("BU3:BX3") = "其它"
+    Range("BY3:CB3") = "自提流水"
+    Range("CC3:CF3") = "自提实收"
+    Range("AW4") = "本期"
+    Range("AX4") = "上期"
+    Range("AY4") = "增长"
+    Range("AZ4") = "增长%"
+    Range("AW4:AZ4").Copy Range("BA4")
+    Range("AW4:AZ4").Copy Range("BE4")
+    Range("AW4:AZ4").Copy Range("BI4")
+    Range("AW4:AZ4").Copy Range("BM4")
+    Range("AW4:AZ4").Copy Range("BQ4")
+    Range("AW4:AZ4").Copy Range("BU4")
+    Range("AW4:AZ4").Copy Range("BY4")
+    Range("AW4:AZ4").Copy Range("CC4")
+    '合并表头单元格
+    Application.DisplayAlerts = False
+    Range("AW3:AZ3").Merge
+    Range("BA3:BD3").Merge
+    Range("BE3:BH3").Merge
+    Range("BI3:BL3").Merge
+    Range("BM3:BP3").Merge
+    Range("BQ3:BT3").Merge
+    Range("BU3:BX3").Merge
+    Range("BY3:CB3").Merge
+    Range("CC3:CF3").Merge
+    Application.DisplayAlerts = True
+    '修改单元格方便透视
+    Range("AW4") = "本期堂食流水"
+    Range("AX4") = "上期堂食流水"
+    Range("BA4") = "本期堂食实收"
+    Range("BB4") = "上期堂食实收"
+    Range("BE4") = "本期外卖流水"
+    Range("BF4") = "上期外卖流水"
+    Range("BI4") = "本期外卖实收"
+    Range("BJ4") = "上期外卖实收"
+    Range("BM4") = "本期美团"
+    Range("BN4") = "上期美团"
+    Range("BQ4") = "本期饿了么"
+    Range("BR4") = "上期饿了么"
+    Range("BU4") = "本期其它"
+    Range("BV4") = "上期其它"
+    Range("BY4") = "本期自提流水"
+    Range("BZ4") = "上期自提流水"
+    Range("CC4") = "本期自提实收"
+    Range("CD4") = "上期自提实收"
 
 End Sub
 
@@ -205,58 +205,58 @@ Sub 环比右侧_填入公式()
 End Sub
 
 Sub 同比右侧_添加列并填入表头()
-	Range("AW3:AZ3") = "堂食流水"
-	Range("BA3:BD3") = "堂食实收"
-	Range("BE3:BH3") = "外卖流水"
-	Range("BI3:BL3") = "外卖实收"
-	Range("BM3:BP3") = "美团"
-	Range("BQ3:BT3") = "饿了么"
-	Range("BU3:BX3") = "其它"
-	Range("BY3:CB3") = "自提流水"
-	Range("CC3:CF3") = "自提实收"
-	Range("AW4") = "本期"
-	Range("AX4") = "同期"
-	Range("AY4") = "增长"
-	Range("AZ4") = "增长%"
-	Range("AW4:AZ4").Copy Range("BA4")
-	Range("AW4:AZ4").Copy Range("BE4")
-	Range("AW4:AZ4").Copy Range("BI4")
-	Range("AW4:AZ4").Copy Range("BM4")
-	Range("AW4:AZ4").Copy Range("BQ4")
-	Range("AW4:AZ4").Copy Range("BU4")
-	Range("AW4:AZ4").Copy Range("BY4")
-	Range("AW4:AZ4").Copy Range("CC4")
-	'合并表头单元格
-	Application.DisplayAlerts = False
-	Range("AW3:AZ3").Merge
-	Range("BA3:BD3").Merge
-	Range("BE3:BH3").Merge
-	Range("BI3:BL3").Merge
-	Range("BM3:BP3").Merge
-	Range("BQ3:BT3").Merge
-	Range("BU3:BX3").Merge
-	Range("BY3:CB3").Merge
-	Range("CC3:CF3").Merge
-	Application.DisplayAlerts = True
-	'修改单元格方便透视
-	Range("AW4") = "本期堂食流水"
-	Range("AX4") = "同期堂食流水"
-	Range("BA4") = "本期堂食实收"
-	Range("BB4") = "同期堂食实收"
-	Range("BE4") = "本期外卖流水"
-	Range("BF4") = "同期外卖流水"
-	Range("BE4") = "本期外卖实收"
-	Range("BF4") = "同期外卖实收"
-	Range("BM4") = "本期美团"
-	Range("BN4") = "同期美团"
-	Range("BQ4") = "本期饿了么"
-	Range("BR4") = "同期饿了么"
-	Range("BU4") = "本期其它"
-	Range("BV4") = "同期其它"
-	Range("BY4") = "本期自提流水"
-	Range("BX4") = "同期自提流水"
-	Range("CC4") = "本期自提实收"
-	Range("CW4") = "同期自提实收"
+    Range("AW3:AZ3") = "堂食流水"
+    Range("BA3:BD3") = "堂食实收"
+    Range("BE3:BH3") = "外卖流水"
+    Range("BI3:BL3") = "外卖实收"
+    Range("BM3:BP3") = "美团"
+    Range("BQ3:BT3") = "饿了么"
+    Range("BU3:BX3") = "其它"
+    Range("BY3:CB3") = "自提流水"
+    Range("CC3:CF3") = "自提实收"
+    Range("AW4") = "本期"
+    Range("AX4") = "同期"
+    Range("AY4") = "增长"
+    Range("AZ4") = "增长%"
+    Range("AW4:AZ4").Copy Range("BA4")
+    Range("AW4:AZ4").Copy Range("BE4")
+    Range("AW4:AZ4").Copy Range("BI4")
+    Range("AW4:AZ4").Copy Range("BM4")
+    Range("AW4:AZ4").Copy Range("BQ4")
+    Range("AW4:AZ4").Copy Range("BU4")
+    Range("AW4:AZ4").Copy Range("BY4")
+    Range("AW4:AZ4").Copy Range("CC4")
+    '合并表头单元格
+    Application.DisplayAlerts = False
+    Range("AW3:AZ3").Merge
+    Range("BA3:BD3").Merge
+    Range("BE3:BH3").Merge
+    Range("BI3:BL3").Merge
+    Range("BM3:BP3").Merge
+    Range("BQ3:BT3").Merge
+    Range("BU3:BX3").Merge
+    Range("BY3:CB3").Merge
+    Range("CC3:CF3").Merge
+    Application.DisplayAlerts = True
+    '修改单元格方便透视
+    Range("AW4") = "本期堂食流水"
+    Range("AX4") = "同期堂食流水"
+    Range("BA4") = "本期堂食实收"
+    Range("BB4") = "同期堂食实收"
+    Range("BE4") = "本期外卖流水"
+    Range("BF4") = "同期外卖流水"
+    Range("BI4") = "本期外卖实收"
+    Range("BJ4") = "同期外卖实收"
+    Range("BM4") = "本期美团"
+    Range("BN4") = "同期美团"
+    Range("BQ4") = "本期饿了么"
+    Range("BR4") = "同期饿了么"
+    Range("BU4") = "本期其它"
+    Range("BV4") = "同期其它"
+    Range("BY4") = "本期自提流水"
+    Range("BZ4") = "同期自提流水"
+    Range("CC4") = "本期自提实收"
+    Range("CD4") = "同期自提实收"
 
 End Sub
 
@@ -316,13 +316,13 @@ Sub 总表_插入新列并填充表头()
             col.Offset(0, 2).Value = "同比增长"
         End If
     Next col
-	'在PRT列后插入新列
-	Columns("U").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
-	Columns("S").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
-	Columns("Q").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
-	Range("Q4") = "同比期"
-	Range("T4") = "同比期"
-	Range("W4") = "同比期"
+    '在PRT列后插入新列
+    Columns("U").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    Columns("S").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    Columns("Q").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    Range("Q4") = "同比期"
+    Range("T4") = "同比期"
+    Range("W4") = "同比期"
 End Sub
 
 Sub 总表_填充同比数据()
@@ -494,31 +494,6 @@ Sub 总表_填充同比数据()
     Range("DO5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-	Range("AZ5").NumberFormat = "0.00"    
+    Range("AZ5").NumberFormat = "0.00"
 End Sub
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
