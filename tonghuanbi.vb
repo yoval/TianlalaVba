@@ -334,7 +334,7 @@ Sub 总表_填充同比数据()
     Dim lastRow1 As Long
     Dim lastRow2 As Long
     Dim copyRange As Range
-    
+
     '打开工作簿
     Set wb = ThisWorkbook
     '设置源工作表
@@ -346,7 +346,6 @@ Sub 总表_填充同比数据()
     '营业天数
     Set copyRange = ws1.Range("P5:P" & lastRow1)
     copyRange.Copy ws2.Range("Q5")
-    
     '翻台率
     Set copyRange = ws1.Range("R5:R" & lastRow1)
     copyRange.Copy ws2.Range("T5")
@@ -380,23 +379,17 @@ Sub 总表_填充同比数据()
     Range("BR5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
-        
     ws1.Range("AZ5:AZ" & lastRow1).Copy
     Sheets("总表").Select
     Range("BS5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
-        
     '堂食实收
     ws1.Range("BB5:BB" & lastRow1).Copy
     Sheets("总表").Select
     Range("BX5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-
-
     ws1.Range("BC5:BC" & lastRow1).Copy
     Sheets("总表").Select
     Range("BY5").Select
@@ -408,93 +401,100 @@ Sub 总表_填充同比数据()
     Range("CD5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
     ws1.Range("BH5:BH" & lastRow1).Copy
     Sheets("总表").Select
     Range("CE5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
     '外卖实收
     ws1.Range("BJ5:BJ" & lastRow1).Copy
     Sheets("总表").Select
     Range("CJ5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
     ws1.Range("BL5:BL" & lastRow1).Copy
     Sheets("总表").Select
     Range("CK5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
-        
     '美团
     ws1.Range("BN5:BN" & lastRow1).Copy
     Sheets("总表").Select
     Range("CP5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
     ws1.Range("bp5:bp" & lastRow1).Copy
     Sheets("总表").Select
     Range("CQ5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
-        
     '饿了么
     ws1.Range("BR5:BR" & lastRow1).Copy
     Sheets("总表").Select
     Range("CV5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
     ws1.Range("Bt5:Bt" & lastRow1).Copy
     Sheets("总表").Select
     Range("CW5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
     '其它
     ws1.Range("BV5:BV" & lastRow1).Copy
     Sheets("总表").Select
     Range("DB5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
     ws1.Range("BX5:BX" & lastRow1).Copy
     Sheets("总表").Select
     Range("DC5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
-        
     '自提流水
     ws1.Range("BZ5:BZ" & lastRow1).Copy
     Sheets("总表").Select
     Range("DH5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
     ws1.Range("CB5:CB" & lastRow1).Copy
     Sheets("总表").Select
     Range("DI5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-    
     '自提实收
-    ws1.Range("Cd5:Cd" & lastRow1).Copy
+    ws1.Range("CD5:CD" & lastRow1).Copy
     Sheets("总表").Select
     Range("DN5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        
     ws1.Range("CF5:CF" & lastRow1).Copy
     Sheets("总表").Select
     Range("DO5").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
     Range("AZ5").NumberFormat = "0.00"
+    Range("O4") = "本期营业天数"
+    Range("P4") = "环比期营业天数"
+    Range("Q4") = "同比期营业天数"	
+    Range("AD4") = "本期实收金额"
+    Range("AE4") = "环比期实收金额"
+    Range("AH4") = "同比期实收金额"	
+    Range("BT4") = "本期堂食实收"
+    Range("BU4") = "环比期堂食实收"
+    Range("BX4") = "同比期堂食实收"	
+    Range("CF4") = "本期外卖实收"
+    Range("CG4") = "环比期外卖实收"
+    Range("CJ4") = "同比期外卖实收"		
+    Range("CL4") = "本期美团"
+    Range("CM4") = "环比期美团"
+    Range("CP4") = "同比期美团"		
+    Range("CR4") = "本期饿了么"
+    Range("CS4") = "环比期饿了么"
+    Range("CV4") = "同比期饿了么"
+	Range("CX4") = "本期其它"
+    Range("CY4") = "环比期其它"
+    Range("DB4") = "同比期其它"	
+	Range("DJ4") = "本期自提实收"
+    Range("DK4") = "环比期自提实收"
+    Range("DN4") = "同比期自提实收"	
 End Sub
-
