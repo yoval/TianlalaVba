@@ -7,7 +7,7 @@
 
 Sub 创建依赖表()
     '创建同比数据源表、环比数据源表、总表、哗啦啦门店信息表
-    '门店管理信息表、本期收银源表、上期收银源表、同期收银源表、门店类型
+    '门店管理信息表、本期收银源表、环比期收银源表、同比期收银源表、门店类型
     Dim wb As Workbook
     Set wb = ThisWorkbook
     
@@ -41,15 +41,15 @@ Sub 创建依赖表()
     Set currCash = wb.Sheets.Add(After:=mgmt)
     currCash.Name = "本期收银源表"
     
-    ' 创建“上期收银源表”
+    ' 创建“环比期收银源表”
     Dim prevCash As Worksheet
     Set prevCash = wb.Sheets.Add(After:=currCash)
-    prevCash.Name = "上期收银源表"
+    prevCash.Name = "环比期收银源表"
     
-    ' 创建“同期收银源表”
+    ' 创建“同比期收银源表”
     Dim sameCash As Worksheet
     Set sameCash = wb.Sheets.Add(After:=prevCash)
-    sameCash.Name = "同期收银源表"
+    sameCash.Name = "同比期收银源表"
     
     ' 创建“门店类型”
     Dim storeType As Worksheet
@@ -117,7 +117,7 @@ Sub 环比右侧_添加列并填入表头()
     Range("BY3:CB3") = "自提流水"
     Range("CC3:CF3") = "自提实收"
     Range("AW4") = "本期"
-    Range("AX4") = "上期"
+    Range("AX4") = "环比期"
     Range("AY4") = "增长"
     Range("AZ4") = "增长%"
     Range("AW4:AZ4").Copy Range("BA4")
@@ -142,54 +142,54 @@ Sub 环比右侧_添加列并填入表头()
     Application.DisplayAlerts = True
     '修改单元格方便透视
     Range("AW4") = "本期堂食流水"
-    Range("AX4") = "上期堂食流水"
+    Range("AX4") = "环比期堂食流水"
     Range("BA4") = "本期堂食实收"
-    Range("BB4") = "上期堂食实收"
+    Range("BB4") = "环比期堂食实收"
     Range("BE4") = "本期外卖流水"
-    Range("BF4") = "上期外卖流水"
+    Range("BF4") = "环比期外卖流水"
     Range("BI4") = "本期外卖实收"
-    Range("BJ4") = "上期外卖实收"
+    Range("BJ4") = "环比期外卖实收"
     Range("BM4") = "本期美团"
-    Range("BN4") = "上期美团"
+    Range("BN4") = "环比期美团"
     Range("BQ4") = "本期饿了么"
-    Range("BR4") = "上期饿了么"
+    Range("BR4") = "环比期饿了么"
     Range("BU4") = "本期其它"
-    Range("BV4") = "上期其它"
+    Range("BV4") = "环比期其它"
     Range("BY4") = "本期自提流水"
-    Range("BZ4") = "上期自提流水"
+    Range("BZ4") = "环比期自提流水"
     Range("CC4") = "本期自提实收"
-    Range("CD4") = "上期自提实收"
+    Range("CD4") = "环比期自提实收"
 
 End Sub
 
 Sub 环比右侧_填入公式()
     '堂食流水
     Range("AW5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!M:M,0)"
-    Range("AX5") = "=XLOOKUP(N5,上期收银源表!D:D,上期收银源表!M:M,0)"
+    Range("AX5") = "=XLOOKUP(N5,环比期收银源表!D:D,环比期收银源表!M:M,0)"
     '堂食实收
     Range("BA5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!N:N,0)"
-    Range("BB5") = "=XLOOKUP(N5,上期收银源表!D:D,上期收银源表!N:N,0)"
+    Range("BB5") = "=XLOOKUP(N5,环比期收银源表!D:D,环比期收银源表!N:N,0)"
     '外卖流水
     Range("BE5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!P:P,0)"
-    Range("BF5") = "=XLOOKUP(N5,上期收银源表!D:D,上期收银源表!P:P,0)"
+    Range("BF5") = "=XLOOKUP(N5,环比期收银源表!D:D,环比期收银源表!P:P,0)"
     '外卖实收
     Range("BI5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!Q:Q,0)"
-    Range("BJ5") = "=XLOOKUP(N5,上期收银源表!D:D,上期收银源表!Q:Q,0)"
+    Range("BJ5") = "=XLOOKUP(N5,环比期收银源表!D:D,环比期收银源表!Q:Q,0)"
     '美团
     Range("BM5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!V:V,0)"
-    Range("BN5") = "=XLOOKUP(N5,上期收银源表!D:D,上期收银源表!V:V,0)"
+    Range("BN5") = "=XLOOKUP(N5,环比期收银源表!D:D,环比期收银源表!V:V,0)"
     '饿了么
     Range("BQ5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!W:W,0)"
-    Range("BR5") = "=XLOOKUP(N5,上期收银源表!D:D,上期收银源表!W:W,0)"
+    Range("BR5") = "=XLOOKUP(N5,环比期收银源表!D:D,环比期收银源表!W:W,0)"
     '其它
     Range("BU5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!AA:AA,0)"
-    Range("BV5") = "=XLOOKUP(N5,上期收银源表!D:D,上期收银源表!AA:AA,0)"
+    Range("BV5") = "=XLOOKUP(N5,环比期收银源表!D:D,环比期收银源表!AA:AA,0)"
     '自提流水
     Range("BY5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!S:S,0)"
-    Range("BZ5") = "=XLOOKUP(N5,上期收银源表!D:D,上期收银源表!S:S,0)"
+    Range("BZ5") = "=XLOOKUP(N5,环比期收银源表!D:D,环比期收银源表!S:S,0)"
     '自提实收
     Range("CC5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!T:T,0)"
-    Range("CD5") = "=XLOOKUP(N5,上期收银源表!D:D,上期收银源表!T:T,0)"
+    Range("CD5") = "=XLOOKUP(N5,环比期收银源表!D:D,环比期收银源表!T:T,0)"
     '计算公式
     Range("AY5") = "=AW5-AX5"
     Range("AZ5") = "=AY5/AX5"
@@ -215,7 +215,7 @@ Sub 同比右侧_添加列并填入表头()
     Range("BY3:CB3") = "自提流水"
     Range("CC3:CF3") = "自提实收"
     Range("AW4") = "本期"
-    Range("AX4") = "同期"
+    Range("AX4") = "同比期"
     Range("AY4") = "增长"
     Range("AZ4") = "增长%"
     Range("AW4:AZ4").Copy Range("BA4")
@@ -240,54 +240,54 @@ Sub 同比右侧_添加列并填入表头()
     Application.DisplayAlerts = True
     '修改单元格方便透视
     Range("AW4") = "本期堂食流水"
-    Range("AX4") = "同期堂食流水"
+    Range("AX4") = "同比期堂食流水"
     Range("BA4") = "本期堂食实收"
-    Range("BB4") = "同期堂食实收"
+    Range("BB4") = "同比期堂食实收"
     Range("BE4") = "本期外卖流水"
-    Range("BF4") = "同期外卖流水"
+    Range("BF4") = "同比期外卖流水"
     Range("BI4") = "本期外卖实收"
-    Range("BJ4") = "同期外卖实收"
+    Range("BJ4") = "同比期外卖实收"
     Range("BM4") = "本期美团"
-    Range("BN4") = "同期美团"
+    Range("BN4") = "同比期美团"
     Range("BQ4") = "本期饿了么"
-    Range("BR4") = "同期饿了么"
+    Range("BR4") = "同比期饿了么"
     Range("BU4") = "本期其它"
-    Range("BV4") = "同期其它"
+    Range("BV4") = "同比期其它"
     Range("BY4") = "本期自提流水"
-    Range("BZ4") = "同期自提流水"
+    Range("BZ4") = "同比期自提流水"
     Range("CC4") = "本期自提实收"
-    Range("CD4") = "同期自提实收"
+    Range("CD4") = "同比期自提实收"
 
 End Sub
 
 Sub 同比右侧_填入公式()
     '堂食流水
     Range("AW5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!M:M,0)"
-    Range("AX5") = "=XLOOKUP(N5,同期收银源表!D:D,同期收银源表!M:M,0)"
+    Range("AX5") = "=XLOOKUP(N5,同比期收银源表!D:D,同比期收银源表!M:M,0)"
     '堂食实收
     Range("BA5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!N:N,0)"
-    Range("BB5") = "=XLOOKUP(N5,同期收银源表!D:D,同期收银源表!N:N,0)"
+    Range("BB5") = "=XLOOKUP(N5,同比期收银源表!D:D,同比期收银源表!N:N,0)"
     '外卖流水
     Range("BE5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!P:P,0)"
-    Range("BF5") = "=XLOOKUP(N5,同期收银源表!D:D,同期收银源表!P:P,0)"
+    Range("BF5") = "=XLOOKUP(N5,同比期收银源表!D:D,同比期收银源表!P:P,0)"
     '外卖实收
     Range("BI5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!Q:Q,0)"
-    Range("BJ5") = "=XLOOKUP(N5,同期收银源表!D:D,同期收银源表!Q:Q,0)"
+    Range("BJ5") = "=XLOOKUP(N5,同比期收银源表!D:D,同比期收银源表!Q:Q,0)"
     '美团
     Range("BM5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!V:V,0)"
-    Range("BN5") = "=XLOOKUP(N5,同期收银源表!D:D,同期收银源表!V:V,0)"
+    Range("BN5") = "=XLOOKUP(N5,同比期收银源表!D:D,同比期收银源表!V:V,0)"
     '饿了么
     Range("BQ5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!W:W,0)"
-    Range("BR5") = "=XLOOKUP(N5,同期收银源表!D:D,同期收银源表!W:W,0)"
+    Range("BR5") = "=XLOOKUP(N5,同比期收银源表!D:D,同比期收银源表!W:W,0)"
     '其它
     Range("BU5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!AA:AA,0)"
-    Range("BV5") = "=XLOOKUP(N5,同期收银源表!D:D,同期收银源表!AA:AA,0)"
+    Range("BV5") = "=XLOOKUP(N5,同比期收银源表!D:D,同比期收银源表!AA:AA,0)"
     '自提流水
     Range("BY5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!S:S,0)"
-    Range("BZ5") = "=XLOOKUP(N5,同期收银源表!D:D,同期收银源表!S:S,0)"
+    Range("BZ5") = "=XLOOKUP(N5,同比期收银源表!D:D,同比期收银源表!S:S,0)"
     '自提实收
     Range("CC5") = "=XLOOKUP(N5,本期收银源表!D:D,本期收银源表!T:T,0)"
-    Range("CD5") = "=XLOOKUP(N5,同期收银源表!D:D,同期收银源表!T:T,0)"
+    Range("CD5") = "=XLOOKUP(N5,同比期收银源表!D:D,同比期收银源表!T:T,0)"
     '计算公式
     Range("AY5") = "=AW5-AX5"
     Range("AZ5") = "=AY5/AX5"
