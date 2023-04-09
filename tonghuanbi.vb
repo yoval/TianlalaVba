@@ -192,7 +192,7 @@ Sub 环比右侧_填入公式()
     Range("CD5") = "=XLOOKUP(N5,环比期收银源表!D:D,环比期收银源表!T:T,0)"
     '计算公式
     Range("AY5") = "=AW5-AX5"
-    Range("AZ5") = "=AY5/AX5"
+    Range("AZ5") = "=IFERROR(AY5/AX5,0)"
     Range("AZ5").NumberFormat = "0.00%"
     Range("AY5:AZ5").Copy Range("BC5")
     Range("AY5:AZ5").Copy Range("BG5")
@@ -290,7 +290,7 @@ Sub 同比右侧_填入公式()
     Range("CD5") = "=XLOOKUP(N5,同比期收银源表!D:D,同比期收银源表!T:T,0)"
     '计算公式
     Range("AY5") = "=AW5-AX5"
-    Range("AZ5") = "=AY5/AX5"
+    Range("AZ5") = "=IFERROR(AY5/AX5,0)"
     Range("AZ5").NumberFormat = "0.00%"
     Range("AY5:AZ5").Copy Range("BC5")
     Range("AY5:AZ5").Copy Range("BG5")
@@ -310,7 +310,7 @@ Sub 总表_插入新列并填充表头()
         If col.Value = "增长%" Then
             '插入两列
             col.Offset(0, 1).EntireColumn.Insert
-			col.Offset(0, 1).EntireColumn.ClearFormats
+            col.Offset(0, 1).EntireColumn.ClearFormats
             col.Offset(0, 2).EntireColumn.Insert
             '更新列标题
             col.Offset(0, 1).Value = "同比期"
@@ -475,26 +475,38 @@ Sub 总表_填充同比数据()
     Range("AZ5").NumberFormat = "0.00"
     Range("O4") = "本期营业天数"
     Range("P4") = "环比期营业天数"
-    Range("Q4") = "同比期营业天数"	
+    Range("Q4") = "同比期营业天数"
     Range("AD4") = "本期实收金额"
     Range("AE4") = "环比期实收金额"
-    Range("AH4") = "同比期实收金额"	
+    Range("AH4") = "同比期实收金额"
     Range("BT4") = "本期堂食实收"
     Range("BU4") = "环比期堂食实收"
-    Range("BX4") = "同比期堂食实收"	
+    Range("BX4") = "同比期堂食实收"
     Range("CF4") = "本期外卖实收"
     Range("CG4") = "环比期外卖实收"
-    Range("CJ4") = "同比期外卖实收"		
+    Range("CJ4") = "同比期外卖实收"
     Range("CL4") = "本期美团"
     Range("CM4") = "环比期美团"
-    Range("CP4") = "同比期美团"		
+    Range("CP4") = "同比期美团"
     Range("CR4") = "本期饿了么"
     Range("CS4") = "环比期饿了么"
     Range("CV4") = "同比期饿了么"
-	Range("CX4") = "本期其它"
+    Range("CX4") = "本期其它"
     Range("CY4") = "环比期其它"
-    Range("DB4") = "同比期其它"	
-	Range("DJ4") = "本期自提实收"
+    Range("DB4") = "同比期其它"
+    Range("DJ4") = "本期自提实收"
     Range("DK4") = "环比期自提实收"
-    Range("DN4") = "同比期自提实收"	
+    Range("DN4") = "同比期自提实收"
+End Sub
+
+Sub 总表_最后一步_插入是否营业()
+    Columns("R").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    Columns("S").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    Columns("T").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    Range("R4") = "本期是否营业"
+    Range("S4") = "环比期是否营业"
+    Range("T4") = "同比期是否营业"
+    Range("R5") = "=IF(O5>0,1,0)"
+    Range("S5") = "=IF(P5>0,1,0)"
+    Range("T5") = "=IF(Q5>0,1,0)"
 End Sub
